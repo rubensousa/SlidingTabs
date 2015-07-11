@@ -1,0 +1,38 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
+
+    <item
+        android:id="@+id/mode1"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:title="@string/tabmode1" />
+
+    <item
+        android:id="@+id/mode2"
+        android:orderInCategory="200"
+        app:showAsAction="never"
+        android:title="@string/tabmode2" />
+
+    <item
+        android:id="@+id/mode3"
+        android:checked="false"
+        android:orderInCategory="300"
+        app:showAsAction="never"
+        android:title="@string/tabmode3" />
+
+    <item
+        android:id="@+id/mode4"
+        android:checked="false"
+        android:orderInCategory="400"
+        app:showAsAction="never"
+        android:title="@string/tabmode4" />
+
+    <item
+        android:id="@+id/mode5"
+        android:checked="false"
+        android:orderInCategory="500"
+        app:showAsAction="never"
+        android:title="@string/tabmode5" />
+
+</menu>

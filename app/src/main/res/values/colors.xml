@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="toolbar_background">#ff669900</color>
+    <color name="tab_indicator">#ffffffff</color>
+    <color name="tab_pressed">#32ffffff</color>
+    <color name="tab_not_pressed">#00ffffff</color>
+
+</resources>

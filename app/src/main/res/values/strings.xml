@@ -1,6 +1,20 @@
 <resources>
     <string name="app_name">SlidingTabs</string>
 
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <array name="tabs">
+        <item>TAB 1</item>
+        <item>TAB 2</item>
+        <item>TAB 3</item>
+        <item>TAB 4</item>
+        <item>TAB 5</item>
+        <item>TAB 6</item>
+        <item>TAB 7</item>
+    </array>
+
+    <string name="tabmode1">Left aligned tabs</string>
+    <string name="tabmode2">Fixed and centered tabs</string>
+    <string name="tabmode3">Fixed and filled tabs</string>
+    <string name="tabmode4">Scrollable tabs</string>
+    <string name="tabmode5">Animated tabs</string>
+
 </resources>
