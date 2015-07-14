@@ -22,5 +22,8 @@ Tabs created with the new android.support.design.widget.TabLayout
     compile 'com.android.support:design:22.2.0'
     
 ## License
-[WTFPL](http://www.wtfpl.net/)
+Copyright © 2015 Rúben Sousa <rubensousa.mieti@gmail.com>
+This work is free. You can redistribute it and/or modify it under the
+terms of the Do What The Fuck You Want To Public License, Version 2,
+as published by Sam Hocevar. See the LICENSE file for more details.
 
