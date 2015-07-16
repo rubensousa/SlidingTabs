@@ -12,7 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class MainActivity extends AppCompatActivity implements TabsParentFragment.TabListener{
+public class MainActivity extends AppCompatActivity implements TabsParentFragment.TabListener, ActionBarCallbacks{
 
     private ActionBar mActionBar;
     private int mCurrentMode = -1;
@@ -23,20 +23,17 @@ public class MainActivity extends AppCompatActivity implements TabsParentFragmen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        mActionBar = getSupportActionBar();
-        mActionBar.setTitle(R.string.tabmode1);
-
         if(savedInstanceState!=null){
             onRestoreInstanceState(savedInstanceState);
         }else {
+            // Add the default mode fragment first
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             Fragment fragment = new TabsParentFragment();
             Bundle bundle = new Bundle();
             bundle.putInt("mode", TabsParentFragment.SCROLLABLE_TABS);
             bundle.putInt("gravity", TabsParentFragment.LEFT_ALIGNED_TABS);
             bundle.putInt("current_tab", mCurrentTab);
+            bundle.putString("title",getString(R.string.tabmode1));
             fragment.setArguments(bundle);
             transaction.add(R.id.container, fragment);
             transaction.commit();
@@ -50,7 +47,6 @@ public class MainActivity extends AppCompatActivity implements TabsParentFragmen
         // restore the current selected mode
         if(mCurrentMode!=-1) {
             onOptionsItemSelected(menu.findItem(mCurrentMode));
-            mActionBar.setTitle(menu.findItem(mCurrentMode).getTitle());
         }
 
         return true;
@@ -91,36 +87,36 @@ public class MainActivity extends AppCompatActivity implements TabsParentFragmen
         if (menuItem.getItemId() == R.id.mode1) {
             bundle.putInt("mode", TabsParentFragment.SCROLLABLE_TABS);
             bundle.putInt("gravity", TabsParentFragment.LEFT_ALIGNED_TABS);
-            mActionBar.setTitle(R.string.tabmode1);
+            bundle.putString("title", getString(R.string.tabmode1));
         }
 
         if (menuItem.getItemId() == R.id.mode2) {
             bundle.putInt("mode", TabsParentFragment.FIXED_TABS);
             bundle.putInt("gravity", TabsParentFragment.CENTERED_TABS);
-            mActionBar.setTitle(R.string.tabmode2);
+            bundle.putString("title", getString(R.string.tabmode2));
         }
 
         if (menuItem.getItemId() == R.id.mode3) {
             bundle.putInt("mode", TabsParentFragment.FIXED_TABS);
             bundle.putInt("gravity", TabsParentFragment.FILLED_TABS);
-            mActionBar.setTitle(R.string.tabmode3);
+            bundle.putString("title", getString(R.string.tabmode3));
         }
 
         if (menuItem.getItemId() == R.id.mode4) {
             bundle.putInt("mode", TabsParentFragment.SCROLLABLE_TABS);
             bundle.putInt("gravity", -1);
-            mActionBar.setTitle(R.string.tabmode4);
+            bundle.putString("title", getString(R.string.tabmode4));
         }
 
         if (menuItem.getItemId() == R.id.mode5) {
             bundle.putInt("mode", TabsParentFragment.FIXED_TABS);
             bundle.putInt("gravity", TabsParentFragment.CENTERED_TABS);
             bundle.putBoolean("animate", true);
-            mActionBar.setTitle(R.string.tabmode5);
+            bundle.putString("title", getString(R.string.tabmode5));
         }
 
         fragment.setArguments(bundle);
-        transaction.add(R.id.container, fragment);
+        transaction.replace(R.id.container, fragment);
         transaction.commit();
 
         return super.onOptionsItemSelected(menuItem);
@@ -130,4 +126,10 @@ public class MainActivity extends AppCompatActivity implements TabsParentFragmen
     public void setCurrentTab(int tab) {
         mCurrentTab = tab;
     }
+
+    @Override
+    public void setActionBar(ActionBar actionBar) {
+        mActionBar = actionBar;
+    }
+
 }

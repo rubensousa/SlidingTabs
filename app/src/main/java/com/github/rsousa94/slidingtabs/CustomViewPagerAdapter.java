@@ -2,6 +2,7 @@ package com.github.rsousa94.slidingtabs;
 
 import android.app.Activity;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -67,17 +68,11 @@ public class CustomViewPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int i) {
-        switch (i){
-            case 0: return new Tab1Fragment();
-            case 1: return new Tab2Fragment();
-            case 2: return new Tab1Fragment();
-            case 3: return new Tab2Fragment();
-            case 4: return new Tab1Fragment();
-            case 5: return new Tab1Fragment();
-            case 6: return new Tab1Fragment();
-            case 7: return new Tab1Fragment();
-            default: return null;
-        }
+        TabFragment tabFragment = new TabFragment();
+        Bundle args = new Bundle();
+        args.putString("tab",mTabsNames[i]);
+        tabFragment.setArguments(args);
+        return tabFragment;
     }
 
     @Override

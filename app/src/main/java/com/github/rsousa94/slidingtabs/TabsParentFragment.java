@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,6 +34,8 @@ public class TabsParentFragment extends Fragment implements TabLayout.OnTabSelec
     private int mTabGravity = 0;
     private int mCurrentTab = 0;
     private TabListener mTabListener;
+    public ActionBar mActionBar;
+    public ActionBarCallbacks mCallbacks;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,12 +49,18 @@ public class TabsParentFragment extends Fragment implements TabLayout.OnTabSelec
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.tabs_parent, container, false);
 
+        Toolbar toolbar = (Toolbar) layout.findViewById(R.id.toolbar);
+        ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+        mActionBar = ((AppCompatActivity)getActivity()).getSupportActionBar();
+        mCallbacks.setActionBar(mActionBar);
+
         // Get tab mode
         Bundle bundle = getArguments();
         mCurrentTab = bundle.getInt("current_tab");
         mTabMode = bundle.getInt("mode");
         mTabGravity = bundle.getInt("gravity");
         mAnimate = bundle.getBoolean("animate");
+        mActionBar.setTitle(bundle.getString("title"));
 
         mViewPager = (ViewPager) layout.findViewById(R.id.viewpager);
         mTabLayout = (TabLayout) layout.findViewById(R.id.tabs);
@@ -171,14 +182,24 @@ public class TabsParentFragment extends Fragment implements TabLayout.OnTabSelec
 
         try {
             mTabListener = (TabListener) activity;
+            mCallbacks = (ActionBarCallbacks) activity;
         } catch (ClassCastException e) {
             throw new ClassCastException(activity.toString()
-                    + " must implement TabListener");
+                    + " must implement TabListener and ActionBarCallbacks");
         }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mCallbacks = null;
+        mTabListener = null;
     }
 
     public interface TabListener {
         void setCurrentTab(int tab);
     }
+
+
 
 }
