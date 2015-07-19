@@ -5,15 +5,13 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class MainActivity extends AppCompatActivity implements TabsParentFragment.TabListener, ActionBarCallbacks{
+public class MainActivity extends AppCompatActivity implements TabsParentFragment.TabListener{
 
-    private ActionBar mActionBar;
     private int mCurrentMode = -1;
     private int mCurrentTab = 0;
 
@@ -126,9 +124,5 @@ public class MainActivity extends AppCompatActivity implements TabsParentFragmen
         mCurrentTab = tab;
     }
 
-    @Override
-    public void setActionBar(ActionBar actionBar) {
-        mActionBar = actionBar;
-    }
 
 }

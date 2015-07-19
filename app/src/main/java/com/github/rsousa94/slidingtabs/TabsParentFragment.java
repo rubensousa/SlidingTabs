@@ -29,13 +29,10 @@ public class TabsParentFragment extends Fragment implements TabLayout.OnTabSelec
     private Animation mTabAnimation;
     private CustomViewPagerAdapter mAdapter;
     private ViewPager mViewPager;
-    private TabLayout mTabLayout;
     private int mTabMode = 0;
     private int mTabGravity = 0;
-    private int mCurrentTab = 0;
     private TabListener mTabListener;
     public ActionBar mActionBar;
-    public ActionBarCallbacks mCallbacks;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,54 +49,53 @@ public class TabsParentFragment extends Fragment implements TabLayout.OnTabSelec
         Toolbar toolbar = (Toolbar) layout.findViewById(R.id.toolbar);
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
         mActionBar = ((AppCompatActivity)getActivity()).getSupportActionBar();
-        mCallbacks.setActionBar(mActionBar);
 
         // Get tab mode
         Bundle bundle = getArguments();
-        mCurrentTab = bundle.getInt("current_tab");
+        int currentTab = bundle.getInt("current_tab");
         mTabMode = bundle.getInt("mode");
         mTabGravity = bundle.getInt("gravity");
         mAnimate = bundle.getBoolean("animate");
         mActionBar.setTitle(bundle.getString("title"));
 
         mViewPager = (ViewPager) layout.findViewById(R.id.viewpager);
-        mTabLayout = (TabLayout) layout.findViewById(R.id.tabs);
+        TabLayout tabLayout = (TabLayout) layout.findViewById(R.id.tabs);
 
         if(mTabMode == SCROLLABLE_TABS) {
             mAdapter = new CustomViewPagerAdapter(getActivity(),getChildFragmentManager(),7);
-            mTabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+            tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         }
 
         if(mTabMode == FIXED_TABS) {
             mAdapter = new CustomViewPagerAdapter(getActivity(),getChildFragmentManager(),2);
-            mTabLayout.setTabMode(TabLayout.MODE_FIXED);
-            mTabLayout.setPadding(getActivity().getResources()
-                            .getDimensionPixelSize(R.dimen.navigation_icon_padding),0,
+            tabLayout.setTabMode(TabLayout.MODE_FIXED);
+            tabLayout.setPadding(getActivity().getResources()
+                            .getDimensionPixelSize(R.dimen.navigation_icon_padding), 0,
                     getActivity().getResources()
-                            .getDimensionPixelSize(R.dimen.navigation_icon_padding),0);
+                            .getDimensionPixelSize(R.dimen.navigation_icon_padding), 0);
         }
 
         if(mTabGravity == LEFT_ALIGNED_TABS){
             mAdapter = new CustomViewPagerAdapter(getActivity(),getChildFragmentManager(),2);
-            mTabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+            tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         }
 
         if(mTabGravity == CENTERED_TABS) {
             mAdapter = new CustomViewPagerAdapter(getActivity(),getChildFragmentManager(),4);
-            mTabLayout.setTabGravity(TabLayout.GRAVITY_CENTER);
+            tabLayout.setTabGravity(TabLayout.GRAVITY_CENTER);
         }
 
         if(mTabGravity == FILLED_TABS) {
             mAdapter = new CustomViewPagerAdapter(getActivity(),getChildFragmentManager(),2);
-            mTabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+            tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
         }
 
         mViewPager.setAdapter(mAdapter);
-        mTabLayout.setupWithViewPager(mViewPager);
+        tabLayout.setupWithViewPager(mViewPager);
 
         // Add custom view to all tabs
-        for(int i = 0; i<mTabLayout.getTabCount(); i++){
-            final TabLayout.Tab tab = mTabLayout.getTabAt(i);
+        for(int i = 0; i< tabLayout.getTabCount(); i++){
+            final TabLayout.Tab tab = tabLayout.getTabAt(i);
             tab.setCustomView(mAdapter.createTabView(i));
         }
 
@@ -107,12 +103,11 @@ public class TabsParentFragment extends Fragment implements TabLayout.OnTabSelec
         mAdapter.initHighlight(0);
 
         // Set this fragment as this TabLayout listener
-        mTabLayout.setOnTabSelectedListener(this);
-
+       tabLayout.setOnTabSelectedListener(this);
 
         // If the state was restored, select the previous selected tab
-        if(mCurrentTab != 0)
-            mTabLayout.getTabAt(mCurrentTab).select();
+        if(currentTab != 0)
+            tabLayout.getTabAt(currentTab).select();
 
         return layout;
     }
@@ -182,17 +177,15 @@ public class TabsParentFragment extends Fragment implements TabLayout.OnTabSelec
 
         try {
             mTabListener = (TabListener) activity;
-            mCallbacks = (ActionBarCallbacks) activity;
         } catch (ClassCastException e) {
             throw new ClassCastException(activity.toString()
-                    + " must implement TabListener and ActionBarCallbacks");
+                    + " must implement TabListener");
         }
     }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        mCallbacks = null;
         mTabListener = null;
     }
 
