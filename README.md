@@ -2,7 +2,7 @@
 
 Tabs created with the new android.support.design.widget.TabLayout
 
-**Support goes all the way back to API 10**
+**Support goes all the way back to API 9**
 
 ## Tab Modes
 
@@ -13,8 +13,8 @@ Tabs created with the new android.support.design.widget.TabLayout
 - Animated (can be used with all of above)
 
 ## Screenshots
-<img src="screenshots/left_aligned.gif" width="300"> <img src="screenshots/centered.gif" width="300">
-<img src="screenshots/filled.gif" width="300"> <img src="screenshots/scrollable.gif" width="300">
+<img src="screenshots/left_aligned.gif" width="300"> <img src="screenshots/scrolling.gif" width="300">
+<img src="screenshots/centered.gif" width="300"> <img src="screenshots/filled.gif" width="300"> <img src="screenshots/scrollable.gif" width="300">
 
 ## Dependencies
 
