@@ -18,8 +18,10 @@ Tabs created with the new android.support.design.widget.TabLayout
 
 ## Dependencies
 
-    compile 'com.android.support:appcompat-v7:22.2.0'
-    compile 'com.android.support:design:22.2.0'
+    compile 'com.android.support:appcompat-v7:22.2.1'
+    compile 'com.android.support:design:22.2.1'
+    compile 'com.android.support:cardview-v7:22.2.1'
+    compile 'com.android.support:recyclerview-v7:22.2.1'
     
 ##License:
     Copyright © 2015 Rúben Sousa <rubensousa.mieti@gmail.com>
