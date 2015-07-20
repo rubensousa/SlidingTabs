@@ -2,7 +2,7 @@
 
 Tabs created with the new android.support.design.widget.TabLayout
 
-**Support goes all the way back to API 9**
+**Support goes all the way back from API 9**
 
 ## Tab Modes
 
