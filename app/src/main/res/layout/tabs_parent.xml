@@ -30,7 +30,6 @@
             android:layout_height="wrap_content"
             android:background="@color/toolbar_background"
             app:tabBackground="@drawable/tab_background"
-            app:tabContentStart="@dimen/navigation_icon_padding"
             app:tabIndicatorColor="@color/tab_indicator" />
 
 

@@ -69,10 +69,6 @@ public class TabsParentFragment extends Fragment implements TabLayout.OnTabSelec
         if(mTabMode == FIXED_TABS) {
             mAdapter = new CustomViewPagerAdapter(getActivity(),getChildFragmentManager(),2);
             tabLayout.setTabMode(TabLayout.MODE_FIXED);
-            tabLayout.setPadding(getActivity().getResources()
-                            .getDimensionPixelSize(R.dimen.navigation_icon_padding), 0,
-                    getActivity().getResources()
-                            .getDimensionPixelSize(R.dimen.navigation_icon_padding), 0);
         }
 
         if(mTabGravity == LEFT_ALIGNED_TABS){
