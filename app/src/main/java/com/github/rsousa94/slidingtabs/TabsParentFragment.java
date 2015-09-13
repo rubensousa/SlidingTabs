@@ -1,6 +1,7 @@
 package com.github.rsousa94.slidingtabs;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -168,8 +169,10 @@ public class TabsParentFragment extends Fragment implements TabLayout.OnTabSelec
     }
 
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        Activity activity = (Activity) context;
 
         try {
             mTabListener = (TabListener) activity;
