@@ -29,6 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/toolbar_background"
+            app:tabContentStart="@dimen/tab_scroll_padding"
             app:tabBackground="@drawable/tab_background"
             app:tabIndicatorColor="@color/tab_indicator" />
 
@@ -43,14 +44,14 @@
         <android.support.v4.view.ViewPager
             android:id="@+id/viewpager"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
         <View
             android:layout_width="fill_parent"
             android:layout_height="8dp"
-            android:background="@drawable/shadow">
+            android:background="@drawable/shadow" />
 
-        </View>
     </FrameLayout>
 
 </android.support.design.widget.CoordinatorLayout>

@@ -10,7 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class MainActivity extends AppCompatActivity implements TabsParentFragment.TabListener{
+public class MainActivity extends AppCompatActivity implements TabsParentFragment.TabListener {
 
     private int mCurrentMode = -1;
     private int mCurrentTab = 0;
@@ -20,9 +20,9 @@ public class MainActivity extends AppCompatActivity implements TabsParentFragmen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if(savedInstanceState!=null){
+        if (savedInstanceState != null) {
             onRestoreInstanceState(savedInstanceState);
-        }else {
+        } else {
             // Add the default mode fragment first
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             Fragment fragment = new TabsParentFragment();
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements TabsParentFragmen
             bundle.putInt("mode", TabsParentFragment.SCROLLABLE_TABS);
             bundle.putInt("gravity", TabsParentFragment.LEFT_ALIGNED_TABS);
             bundle.putInt("current_tab", mCurrentTab);
-            bundle.putString("title",getString(R.string.tabmode1));
+            bundle.putString("title", getString(R.string.tabmode1));
             fragment.setArguments(bundle);
             transaction.add(R.id.container, fragment);
             transaction.commit();
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements TabsParentFragmen
         getMenuInflater().inflate(R.menu.main, menu);
 
         // restore the current selected mode
-        if(mCurrentMode!=-1) {
+        if (mCurrentMode != -1) {
             onOptionsItemSelected(menu.findItem(mCurrentMode));
         }
 
@@ -52,8 +52,8 @@ public class MainActivity extends AppCompatActivity implements TabsParentFragmen
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putInt("current_mode",mCurrentMode);
-        outState.putInt("current_tab",mCurrentTab);
+        outState.putInt("current_mode", mCurrentMode);
+        outState.putInt("current_tab", mCurrentTab);
     }
 
     @Override
@@ -65,14 +65,18 @@ public class MainActivity extends AppCompatActivity implements TabsParentFragmen
 
     @Override
     public boolean onOptionsItemSelected(MenuItem menuItem) {
-        if(mCurrentMode == menuItem.getItemId())
+        if (mCurrentMode == menuItem.getItemId())
             return true;
+
+        if (menuItem.getTitle() == null) {
+            return true;
+        }
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         Fragment previous = fragmentManager.findFragmentByTag(TabsParentFragment.class.getName());
 
-        if(previous!=null) {
+        if (previous != null) {
             transaction.remove(previous);
             transaction.addToBackStack(null);
         }
