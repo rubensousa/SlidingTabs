@@ -48,6 +48,7 @@ public class TabsParentFragment extends Fragment implements TabLayout.OnTabSelec
         View layout = inflater.inflate(R.layout.tabs_parent, container, false);
 
         Toolbar toolbar = (Toolbar) layout.findViewById(R.id.toolbar);
+        toolbar.setNavigationIcon(R.drawable.ic_menu_24dp);
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
         mActionBar = ((AppCompatActivity)getActivity()).getSupportActionBar();
 
