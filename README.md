@@ -2,7 +2,9 @@
 
 Tabs created with the new android.support.design.widget.TabLayout
 
-**Support goes all the way back from API 9**
+Includes a fake shadow below the AppBar for devices with API < 21 and toolbar scrolling behavior.
+
+**Support goes all the way back to API 9**
 
 ## Tab Modes
 
@@ -10,6 +12,8 @@ Tabs created with the new android.support.design.widget.TabLayout
 - Centered
 - Filled (fills all width)
 - Scrollable
+- Icons
+- Icons and text
 - Animated (can be used with all of above)
 
 ## Screenshots
@@ -18,10 +22,10 @@ Tabs created with the new android.support.design.widget.TabLayout
 
 ## Dependencies
 
-    compile 'com.android.support:appcompat-v7:23.0.1'
-    compile 'com.android.support:design:23.0.1'
-    compile 'com.android.support:cardview-v7:23.0.1'
-    compile 'com.android.support:recyclerview-v7:23.0.1'
+    compile 'com.android.support:appcompat-v7:23.1.0'
+    compile 'com.android.support:design:23.1.0'
+    compile 'com.android.support:cardview-v7:23.1.0'
+    compile 'com.android.support:recyclerview-v7:23.1.0'
     
 ##License:
     Copyright © 2015 Rúben Sousa <rubensousa.mieti@gmail.com>
