@@ -10,10 +10,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class MainActivity extends AppCompatActivity implements TabsParentFragment.TabListener {
+public class MainActivity extends AppCompatActivity {
 
+    private static final String CURRENT_MODE = "current_mode";
     private int mCurrentMode = -1;
-    private int mCurrentTab = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +27,8 @@ public class MainActivity extends AppCompatActivity implements TabsParentFragmen
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             Fragment fragment = new TabsParentFragment();
             Bundle bundle = new Bundle();
-            bundle.putInt("mode", TabsParentFragment.SCROLLABLE_TABS);
-            bundle.putInt("gravity", TabsParentFragment.LEFT_ALIGNED_TABS);
-            bundle.putInt("current_tab", mCurrentTab);
-            bundle.putString("title", getString(R.string.tabmode1));
+            bundle.putInt(TabsParentFragment.MODE, TabsParentFragment.LEFT_ALIGNED_TABS);
+            bundle.putString(TabsParentFragment.MODE_TITLE, getString(R.string.tabmode1));
             fragment.setArguments(bundle);
             transaction.add(R.id.container, fragment);
             transaction.commit();
@@ -52,15 +50,13 @@ public class MainActivity extends AppCompatActivity implements TabsParentFragmen
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putInt("current_mode", mCurrentMode);
-        outState.putInt("current_tab", mCurrentTab);
+        outState.putInt(CURRENT_MODE, mCurrentMode);
     }
 
     @Override
     public void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        mCurrentMode = savedInstanceState.getInt("current_mode");
-        mCurrentTab = savedInstanceState.getInt("current_tab");
+        mCurrentMode = savedInstanceState.getInt(CURRENT_MODE);
     }
 
     @Override
@@ -74,59 +70,50 @@ public class MainActivity extends AppCompatActivity implements TabsParentFragmen
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        Fragment previous = fragmentManager.findFragmentByTag(TabsParentFragment.class.getName());
-
-        if (previous != null) {
-            transaction.remove(previous);
-            transaction.addToBackStack(null);
-        }
-
         Fragment fragment = new TabsParentFragment();
         Bundle bundle = new Bundle();
         mCurrentMode = menuItem.getItemId();
 
         if (menuItem.getItemId() == R.id.mode1) {
-            bundle.putInt("mode", TabsParentFragment.SCROLLABLE_TABS);
-            bundle.putInt("gravity", TabsParentFragment.LEFT_ALIGNED_TABS);
-            bundle.putString("title", getString(R.string.tabmode1));
+            bundle.putInt(TabsParentFragment.MODE, TabsParentFragment.LEFT_ALIGNED_TABS);
+            bundle.putString(TabsParentFragment.MODE_TITLE, getString(R.string.tabmode1));
         }
 
         if (menuItem.getItemId() == R.id.mode2) {
-            bundle.putInt("mode", TabsParentFragment.FIXED_TABS);
-            bundle.putInt("gravity", TabsParentFragment.CENTERED_TABS);
-            bundle.putString("title", getString(R.string.tabmode2));
+            bundle.putInt(TabsParentFragment.MODE, TabsParentFragment.FIXED_CENTERED_TABS);
+            bundle.putString(TabsParentFragment.MODE_TITLE, getString(R.string.tabmode2));
         }
 
         if (menuItem.getItemId() == R.id.mode3) {
-            bundle.putInt("mode", TabsParentFragment.FIXED_TABS);
-            bundle.putInt("gravity", TabsParentFragment.FILLED_TABS);
-            bundle.putString("title", getString(R.string.tabmode3));
+            bundle.putInt(TabsParentFragment.MODE, TabsParentFragment.FIXED_FILLED_TABS);
+            bundle.putString(TabsParentFragment.MODE_TITLE, getString(R.string.tabmode3));
         }
 
         if (menuItem.getItemId() == R.id.mode4) {
-            bundle.putInt("mode", TabsParentFragment.SCROLLABLE_TABS);
-            bundle.putInt("gravity", -1);
-            bundle.putString("title", getString(R.string.tabmode4));
+            bundle.putInt(TabsParentFragment.MODE, TabsParentFragment.SCROLLABLE_TABS);
+            bundle.putString(TabsParentFragment.MODE_TITLE, getString(R.string.tabmode4));
         }
 
         if (menuItem.getItemId() == R.id.mode5) {
-            bundle.putInt("mode", TabsParentFragment.FIXED_TABS);
-            bundle.putInt("gravity", TabsParentFragment.CENTERED_TABS);
-            bundle.putBoolean("animate", true);
-            bundle.putString("title", getString(R.string.tabmode5));
+            bundle.putInt(TabsParentFragment.MODE, TabsParentFragment.ICON_TABS);
+            bundle.putString(TabsParentFragment.MODE_TITLE, getString(R.string.tabmode5));
+        }
+
+        if (menuItem.getItemId() == R.id.mode6) {
+            bundle.putInt(TabsParentFragment.MODE, TabsParentFragment.ICON_TEXT_TABS);
+            bundle.putString(TabsParentFragment.MODE_TITLE, getString(R.string.tabmode6));
+        }
+
+        if (menuItem.getItemId() == R.id.mode7) {
+            bundle.putInt(TabsParentFragment.MODE, TabsParentFragment.ANIMATED_TABS);
+            bundle.putString(TabsParentFragment.MODE_TITLE, getString(R.string.tabmode7));
         }
 
         fragment.setArguments(bundle);
-        transaction.replace(R.id.container, fragment);
+        transaction.replace(R.id.container, fragment, TabsParentFragment.class.getName());
         transaction.commit();
 
         return super.onOptionsItemSelected(menuItem);
     }
-
-    @Override
-    public void setCurrentTab(int tab) {
-        mCurrentTab = tab;
-    }
-
 
 }

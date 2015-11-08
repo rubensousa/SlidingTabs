@@ -15,6 +15,8 @@
     <string name="tabmode2">Fixed and centered tabs</string>
     <string name="tabmode3">Fixed and filled tabs</string>
     <string name="tabmode4">Scrollable tabs</string>
-    <string name="tabmode5">Animated tabs</string>
+    <string name="tabmode5">Tabs with icons</string>
+    <string name="tabmode6">Tabs with icons and text</string>
+    <string name="tabmode7">Animated tabs</string>
 
 </resources>

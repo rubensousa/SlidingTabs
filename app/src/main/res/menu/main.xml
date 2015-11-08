@@ -35,4 +35,19 @@
         app:showAsAction="never"
         android:title="@string/tabmode5" />
 
+
+    <item
+        android:id="@+id/mode6"
+        android:checked="false"
+        android:orderInCategory="600"
+        app:showAsAction="never"
+        android:title="@string/tabmode6" />
+
+    <item
+        android:id="@+id/mode7"
+        android:checked="false"
+        android:orderInCategory="700"
+        app:showAsAction="never"
+        android:title="@string/tabmode7" />
+
 </menu>

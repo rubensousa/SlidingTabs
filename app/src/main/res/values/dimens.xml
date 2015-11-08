@@ -4,6 +4,6 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
 
 
-    <dimen name="tab_scroll_padding">62dp</dimen>
+    <dimen name="tab_scroll_padding">72dp</dimen>
 
 </resources>
