@@ -1,4 +1,4 @@
-package com.github.rsousa94.slidingtabs;
+package com.github.rubensousa.slidingtabs;
 
 import android.os.Build;
 import android.os.Bundle;
@@ -42,23 +42,24 @@ public class TabsParentFragment extends Fragment implements TabLayout.OnTabSelec
         super.onCreate(savedInstanceState);
 
         // Prepare Animation
-        mTabAnimation = AnimationUtils.loadAnimation(getActivity(), R.anim.grow_fade_in_from_bottom);
+        mTabAnimation = AnimationUtils.loadAnimation(getActivity(), com.github.rubensousa.slidingtabs.R.anim.grow_fade_in_from_bottom);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View layout = inflater.inflate(R.layout.tabs_parent, container, false);
+        View layout = inflater.inflate(com.github.rubensousa.slidingtabs.R.layout.tabs_parent, container, false);
 
-        Toolbar toolbar = (Toolbar) layout.findViewById(R.id.toolbar);
-        View fakeShadow = layout.findViewById(R.id.fakeShadow);
-        mViewPager = (ViewPager) layout.findViewById(R.id.viewpager);
-        TabLayout tabLayout = (TabLayout) layout.findViewById(R.id.tabs);
+        Toolbar toolbar = (Toolbar) layout.findViewById(com.github.rubensousa.slidingtabs.R.id.toolbar);
+        View fakeShadow = layout.findViewById(com.github.rubensousa.slidingtabs.R.id.fakeShadow);
+        mViewPager = (ViewPager) layout.findViewById(com.github.rubensousa.slidingtabs.R.id.viewpager);
+        TabLayout tabLayout = (TabLayout) layout.findViewById(com.github.rubensousa.slidingtabs.R.id.tabs);
+
         // Hide fake shadow for Lollipop and above since the app bar already casts a shadow
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             fakeShadow.setVisibility(View.GONE);
         }
 
-        toolbar.setNavigationIcon(R.drawable.ic_menu_24dp);
+        toolbar.setNavigationIcon(com.github.rubensousa.slidingtabs.R.drawable.ic_menu_24dp);
         AppCompatActivity appCompatActivity = (AppCompatActivity) getActivity();
         appCompatActivity.setSupportActionBar(toolbar);
         ActionBar actionBar = appCompatActivity.getSupportActionBar();
@@ -171,13 +172,13 @@ public class TabsParentFragment extends Fragment implements TabLayout.OnTabSelec
                 args.putString(TabFragment.TAB_NUMBER, "" + (i + 1));
                 tabFragment.setArguments(args);
                 if (i == 0) {
-                    adapter.addFragment(tabFragment, R.drawable.ic_call_24dp);
+                    adapter.addFragment(tabFragment, com.github.rubensousa.slidingtabs.R.drawable.ic_call_24dp);
                 }
                 if (i == 1) {
-                    adapter.addFragment(tabFragment, R.drawable.ic_favorite_24dp);
+                    adapter.addFragment(tabFragment, com.github.rubensousa.slidingtabs.R.drawable.ic_favorite_24dp);
                 }
                 if (i == 2) {
-                    adapter.addFragment(tabFragment, R.drawable.ic_nearby_24dp);
+                    adapter.addFragment(tabFragment, com.github.rubensousa.slidingtabs.R.drawable.ic_nearby_24dp);
                 }
             }
             return adapter;
@@ -193,13 +194,13 @@ public class TabsParentFragment extends Fragment implements TabLayout.OnTabSelec
                 args.putString(TabFragment.TAB_NUMBER, "" + (i + 1));
                 tabFragment.setArguments(args);
                 if (i == 0) {
-                    adapter.addFragment(tabFragment, "recents", R.drawable.ic_call_24dp);
+                    adapter.addFragment(tabFragment, "recents", com.github.rubensousa.slidingtabs.R.drawable.ic_call_24dp);
                 }
                 if (i == 1) {
-                    adapter.addFragment(tabFragment, "favorites", R.drawable.ic_favorite_24dp);
+                    adapter.addFragment(tabFragment, "favorites", com.github.rubensousa.slidingtabs.R.drawable.ic_favorite_24dp);
                 }
                 if (i == 2) {
-                    adapter.addFragment(tabFragment, "nearby", R.drawable.ic_nearby_24dp);
+                    adapter.addFragment(tabFragment, "nearby", com.github.rubensousa.slidingtabs.R.drawable.ic_nearby_24dp);
                 }
             }
             return adapter;

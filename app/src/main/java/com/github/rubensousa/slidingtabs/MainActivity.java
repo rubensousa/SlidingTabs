@@ -1,4 +1,4 @@
-package com.github.rsousa94.slidingtabs;
+package com.github.rubensousa.slidingtabs;
 
 
 import android.os.Bundle;
@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(com.github.rubensousa.slidingtabs.R.layout.activity_main);
 
         if (savedInstanceState != null) {
             onRestoreInstanceState(savedInstanceState);
@@ -28,16 +28,16 @@ public class MainActivity extends AppCompatActivity {
             Fragment fragment = new TabsParentFragment();
             Bundle bundle = new Bundle();
             bundle.putInt(TabsParentFragment.MODE, TabsParentFragment.LEFT_ALIGNED_TABS);
-            bundle.putString(TabsParentFragment.MODE_TITLE, getString(R.string.tabmode1));
+            bundle.putString(TabsParentFragment.MODE_TITLE, getString(com.github.rubensousa.slidingtabs.R.string.tabmode1));
             fragment.setArguments(bundle);
-            transaction.add(R.id.container, fragment);
+            transaction.add(com.github.rubensousa.slidingtabs.R.id.container, fragment);
             transaction.commit();
         }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(com.github.rubensousa.slidingtabs.R.menu.main, menu);
 
         // restore the current selected mode
         if (mCurrentMode != -1) {
@@ -74,43 +74,43 @@ public class MainActivity extends AppCompatActivity {
         Bundle bundle = new Bundle();
         mCurrentMode = menuItem.getItemId();
 
-        if (menuItem.getItemId() == R.id.mode1) {
+        if (menuItem.getItemId() == com.github.rubensousa.slidingtabs.R.id.mode1) {
             bundle.putInt(TabsParentFragment.MODE, TabsParentFragment.LEFT_ALIGNED_TABS);
-            bundle.putString(TabsParentFragment.MODE_TITLE, getString(R.string.tabmode1));
+            bundle.putString(TabsParentFragment.MODE_TITLE, getString(com.github.rubensousa.slidingtabs.R.string.tabmode1));
         }
 
-        if (menuItem.getItemId() == R.id.mode2) {
+        if (menuItem.getItemId() == com.github.rubensousa.slidingtabs.R.id.mode2) {
             bundle.putInt(TabsParentFragment.MODE, TabsParentFragment.FIXED_CENTERED_TABS);
-            bundle.putString(TabsParentFragment.MODE_TITLE, getString(R.string.tabmode2));
+            bundle.putString(TabsParentFragment.MODE_TITLE, getString(com.github.rubensousa.slidingtabs.R.string.tabmode2));
         }
 
-        if (menuItem.getItemId() == R.id.mode3) {
+        if (menuItem.getItemId() == com.github.rubensousa.slidingtabs.R.id.mode3) {
             bundle.putInt(TabsParentFragment.MODE, TabsParentFragment.FIXED_FILLED_TABS);
-            bundle.putString(TabsParentFragment.MODE_TITLE, getString(R.string.tabmode3));
+            bundle.putString(TabsParentFragment.MODE_TITLE, getString(com.github.rubensousa.slidingtabs.R.string.tabmode3));
         }
 
-        if (menuItem.getItemId() == R.id.mode4) {
+        if (menuItem.getItemId() == com.github.rubensousa.slidingtabs.R.id.mode4) {
             bundle.putInt(TabsParentFragment.MODE, TabsParentFragment.SCROLLABLE_TABS);
-            bundle.putString(TabsParentFragment.MODE_TITLE, getString(R.string.tabmode4));
+            bundle.putString(TabsParentFragment.MODE_TITLE, getString(com.github.rubensousa.slidingtabs.R.string.tabmode4));
         }
 
-        if (menuItem.getItemId() == R.id.mode5) {
+        if (menuItem.getItemId() == com.github.rubensousa.slidingtabs.R.id.mode5) {
             bundle.putInt(TabsParentFragment.MODE, TabsParentFragment.ICON_TABS);
-            bundle.putString(TabsParentFragment.MODE_TITLE, getString(R.string.tabmode5));
+            bundle.putString(TabsParentFragment.MODE_TITLE, getString(com.github.rubensousa.slidingtabs.R.string.tabmode5));
         }
 
-        if (menuItem.getItemId() == R.id.mode6) {
+        if (menuItem.getItemId() == com.github.rubensousa.slidingtabs.R.id.mode6) {
             bundle.putInt(TabsParentFragment.MODE, TabsParentFragment.ICON_TEXT_TABS);
-            bundle.putString(TabsParentFragment.MODE_TITLE, getString(R.string.tabmode6));
+            bundle.putString(TabsParentFragment.MODE_TITLE, getString(com.github.rubensousa.slidingtabs.R.string.tabmode6));
         }
 
-        if (menuItem.getItemId() == R.id.mode7) {
+        if (menuItem.getItemId() == com.github.rubensousa.slidingtabs.R.id.mode7) {
             bundle.putInt(TabsParentFragment.MODE, TabsParentFragment.ANIMATED_TABS);
-            bundle.putString(TabsParentFragment.MODE_TITLE, getString(R.string.tabmode7));
+            bundle.putString(TabsParentFragment.MODE_TITLE, getString(com.github.rubensousa.slidingtabs.R.string.tabmode7));
         }
 
         fragment.setArguments(bundle);
-        transaction.replace(R.id.container, fragment, TabsParentFragment.class.getName());
+        transaction.replace(com.github.rubensousa.slidingtabs.R.id.container, fragment, TabsParentFragment.class.getName());
         transaction.commit();
 
         return super.onOptionsItemSelected(menuItem);

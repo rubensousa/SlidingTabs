@@ -1,4 +1,4 @@
-package com.github.rsousa94.slidingtabs;
+package com.github.rubensousa.slidingtabs;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -21,7 +21,7 @@ public class CustomRecyclerViewAdapter extends RecyclerView.Adapter<CustomRecycl
 
         public ViewHolder(View layout){
             super(layout);
-            mTextView = (TextView) layout.findViewById(R.id.item_textview);
+            mTextView = (TextView) layout.findViewById(com.github.rubensousa.slidingtabs.R.id.item_textview);
         }
 
     }
@@ -29,7 +29,7 @@ public class CustomRecyclerViewAdapter extends RecyclerView.Adapter<CustomRecycl
     @Override
     public CustomRecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.recycler_view_item, viewGroup, false);
+                .inflate(com.github.rubensousa.slidingtabs.R.layout.recycler_view_item, viewGroup, false);
 
         return new ViewHolder(view);
     }

@@ -1,4 +1,4 @@
-package com.github.rsousa94.slidingtabs;
+package com.github.rubensousa.slidingtabs;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,9 +15,9 @@ public class TabFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.tab_fragment, container, false);
+        View view = inflater.inflate(com.github.rubensousa.slidingtabs.R.layout.tab_fragment, container, false);
 
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
+        RecyclerView recyclerView = (RecyclerView) view.findViewById(com.github.rubensousa.slidingtabs.R.id.recyclerView);
         String tab = getArguments().getString(TAB_NUMBER);
         CustomRecyclerViewAdapter adapter = new CustomRecyclerViewAdapter(tab);
         recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));

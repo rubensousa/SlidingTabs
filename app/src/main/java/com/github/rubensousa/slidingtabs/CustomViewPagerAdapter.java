@@ -1,4 +1,4 @@
-package com.github.rsousa94.slidingtabs;
+package com.github.rubensousa.slidingtabs;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -47,22 +47,22 @@ public class CustomViewPagerAdapter extends FragmentPagerAdapter {
         ImageView tabIcon;
 
         if (mMode == TEXT_ONLY) {
-            tabView = mLayoutInflater.inflate(R.layout.tabs, mTabLayout, false);
+            tabView = mLayoutInflater.inflate(com.github.rubensousa.slidingtabs.R.layout.tabs, mTabLayout, false);
             tabText = (AppCompatTextView) tabView;
             tabText.setText(mTabsNames.get(position));
         }
 
         if (mMode == ICONS_ONLY) {
-            tabView = mLayoutInflater.inflate(R.layout.tabs_icons, mTabLayout, false);
-            tabIcon = (ImageView) tabView.findViewById(R.id.tab_icon);
+            tabView = mLayoutInflater.inflate(com.github.rubensousa.slidingtabs.R.layout.tabs_icons, mTabLayout, false);
+            tabIcon = (ImageView) tabView.findViewById(com.github.rubensousa.slidingtabs.R.id.tab_icon);
             tabIcon.setImageResource(mTabsIcons.get(position));
         }
 
         if (mMode == TEXT_AND_ICONS) {
-            tabView = mLayoutInflater.inflate(R.layout.tabs_icons_text, mTabLayout, false);
-            tabText = (AppCompatTextView) tabView.findViewById(R.id.tab_text);
+            tabView = mLayoutInflater.inflate(com.github.rubensousa.slidingtabs.R.layout.tabs_icons_text, mTabLayout, false);
+            tabText = (AppCompatTextView) tabView.findViewById(com.github.rubensousa.slidingtabs.R.id.tab_text);
             tabText.setText(mTabsNames.get(position));
-            tabIcon = (ImageView) tabView.findViewById(R.id.tab_icon);
+            tabIcon = (ImageView) tabView.findViewById(com.github.rubensousa.slidingtabs.R.id.tab_icon);
             tabIcon.setImageResource(mTabsIcons.get(position));
         }
 
