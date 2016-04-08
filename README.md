@@ -17,8 +17,8 @@ Includes a fake shadow below the AppBar for devices with API < 21 and toolbar sc
 - Animated (can be used with all of above)
 
 ## Screenshots
-<img src="screenshots/left_aligned.gif" width="300"> <img src="screenshots/scrolling.gif" width="300">
-<img src="screenshots/centered.gif" width="300"> <img src="screenshots/filled.gif" width="300"> <img src="screenshots/scrollable.gif" width="300">
+<img src="screenshots/modes.png" width="350"> <img src="screenshots/centered.png" width="350">
+<img src="screenshots/icons.png" width="350"> <img src="screenshots/icons_text.png" width="350">
 
 ## Dependencies
 
