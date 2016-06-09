@@ -22,10 +22,10 @@ Includes a fake shadow below the AppBar for devices with API < 21 and toolbar sc
 
 ## Dependencies
 
-    compile 'com.android.support:appcompat-v7:23.1.0'
-    compile 'com.android.support:design:23.1.0'
-    compile 'com.android.support:cardview-v7:23.1.0'
-    compile 'com.android.support:recyclerview-v7:23.1.0'
+    compile 'com.android.support:appcompat-v7:23.3.0'
+    compile 'com.android.support:design:23.3.0'
+    compile 'com.android.support:cardview-v7:23.3.0'
+    compile 'com.android.support:recyclerview-v7:23.3.0'
     
 ##License:
     Copyright © 2015 Rúben Sousa <rubensousa.mieti@gmail.com>
