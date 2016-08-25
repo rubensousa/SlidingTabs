@@ -4,7 +4,7 @@ Tabs created with the new android.support.design.widget.TabLayout
 
 Includes a fake shadow below the AppBar for devices with API < 21 and toolbar scrolling behavior.
 
-**Support goes all the way back to API 9**
+## This sample is no longer being maintainable. Please, check this helper library instead: https://github.com/rubensousa/TabLayoutAdapter
 
 ## Tab Modes
 
